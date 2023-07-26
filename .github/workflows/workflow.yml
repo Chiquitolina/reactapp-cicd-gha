@@ -1,0 +1,24 @@
+name: React
+
+on:
+    push:
+        branches:
+            - "master"
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        
+        steps:
+          - name: Actions repository   
+            uses: actions/checkout@v2
+
+          - name: Set up enviroment node
+            uses: actions/setup-node@v2
+            with: 
+              node-version: '18'
+              
+          - name: build client
+            run: |
+                 npm ci
+                 npm run build      
